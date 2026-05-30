@@ -6,7 +6,7 @@
 /*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 16:51:40 by baserbet          #+#    #+#             */
-/*   Updated: 2026/05/30 16:54:15 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/05/30 17:24:09 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,32 @@ static int	fill_values(char **tab, int **values, int size)
 	}
 	free_tab(tab);
 	return (size);
+}
+
+int	is_sorted(t_stack *stack)
+{
+	int	t;
+
+	t = stack->nb;
+	while (stack->next->nb != top)
+	{
+		if (stack ->nb > stack->next->nb)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
+int	is_decreasing(t_stack *stack)
+{
+	int	t;
+
+	t = stack->nb;
+	while (stack->next->nb != top)
+	{
+		if (stack ->nb > stack->next->nb)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }
