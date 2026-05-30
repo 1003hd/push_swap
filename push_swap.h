@@ -6,7 +6,7 @@
 /*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:46 by baserbet          #+#    #+#             */
-/*   Updated: 2026/05/29 18:29:05 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/05/30 17:01:41 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
+# include <limits.h>
+# include <stdio.h>
 
 typedef struct s_stack
 {

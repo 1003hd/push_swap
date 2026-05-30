@@ -6,13 +6,13 @@
 /*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 12:04:36 by baserbet          #+#    #+#             */
-/*   Updated: 2026/04/24 14:53:25 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/05/30 16:46:58 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	long	i;
 	long	r;

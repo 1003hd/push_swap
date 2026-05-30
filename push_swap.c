@@ -6,7 +6,13 @@
 /*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:33 by baserbet          #+#    #+#             */
-/*   Updated: 2026/05/29 17:49:34 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/05/30 16:29:58 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
+static void sort_three(t_stack **a)
+{
+	if (is)
+}
