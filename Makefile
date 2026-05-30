@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC		= 
+SRC		= push_swap.c
 
 OBJ		= ${SRC:.c=.o}
 
@@ -30,7 +30,7 @@ $(LIB):
 	make -C $(LIB_DIR)
 
 ${NAME}: $(LIB) ${OBJ}
-	@${CC} $(CFLAGS) ${OBJ} $(LIBS) -o $(NAME)
+	@${CC} $(CFLAGS) ${OBJ} $(LIB) -o $(NAME)
 	@echo "Compilation successful."
 
 %.o:		%.c ${HEAD}
