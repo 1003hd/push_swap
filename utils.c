@@ -6,61 +6,48 @@
 /*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 16:51:40 by baserbet          #+#    #+#             */
-/*   Updated: 2026/05/30 16:54:15 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/05/30 20:22:12 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static char	*join_args(int ac, char **av)
+int	is_sorted(t_stack *stack)
 {
-	char	*result;
-	char	*tmp;
-	int		i;
+	t_list	*cur;
+	int		a;
+	int		b;
 
-	result = ft_strdup(av[1]);
-	if (!result)
-		return (NULL);
-	i = 2;
-	while (i < ac)
+	if (!stack->head)
+		return (1);
+	cur = stack->head;
+	while (cur->next)
 	{
-		tmp = ft_strjoin(result, " ");
-		free(result);
-		result = ft_strjoin(tmp, av[i]);
-		free(tmp);
-		if (!result)
-			return (NULL);
-		i++;
+		a = (int)(intptr_t)cur->content;
+		b = (int)(intptr_t)cur->next->content;
+		if (a > b)
+			return (0);
+		cur = cur->next;
 	}
-	return (result);
+	return (1);
 }
 
-static int	get_size(char **tab)
+int	is_decreasing(t_stack *stack)
 {
-	int	size;
+	t_list	*cur;
+	int		a;
+	int		b;
 
-	size = 0;
-	while (tab[size])
-		size++;
-	return (size);
-}
-
-static int	fill_values(char **tab, int **values, int size)
-{
-	int	i;
-
-	*values = malloc(size * sizeof(int));
-	if (!*values)
+	if (!stack->head)
+		return (1);
+	cur = stack->head;
+	while (cur->next)
 	{
-		free_tab(tab);
-		return (0);
+		a = (int)(intptr_t)cur->content;
+		b = (int)(intptr_t)cur->next->content;
+		if (a < b)
+			return (0);
+		cur = cur->next;
 	}
-	i = 0;
-	while (tab[i])
-	{
-		(*values)[i] = (int)ft_atoi(tab[i]);
-		i++;
-	}
-	free_tab(tab);
-	return (size);
+	return (1);
 }
