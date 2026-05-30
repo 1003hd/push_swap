@@ -12,25 +12,32 @@
 
 #include "push_swap.h"
 
+//valid: optional one sign, at least one digit, only digits, and the
+//value fits in int. accumulate in long so overflow is caught before
+//the int truncation that ft_atoi would silently do.
 static int	is_valid_nb(char *s)
 {
 	long	n;
 	int		i;
+	int		sign;
 
 	i = 0;
-	if ((s[i] == '+' || s[i] == '-') && s[i + 1])
-		i++;
+	sign = 1;
+	n = 0;
+	if (s[i] == '+' || s[i] == '-')
+		if (s[i++] == '-')
+			sign = -1;
 	if (!ft_isdigit(s[i]))
 		return (0);
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
 			return (0);
+		n = n * 10 + (s[i] - '0');
+		if (sign * n > INT_MAX || sign * n < INT_MIN)
+			return (0);
 		i++;
 	}
-	n = ft_atoi(s);
-	if (n > 2147483647 || n < -2147483648)
-		return (0);
 	return (1);
 }
 
@@ -78,20 +85,29 @@ static int	check_nb_array(char **nb_array)
 	return (1);
 }
 
+//returns number of values on success, -1 on any error.
 int	parse(int ac, char **av, int **values)
 {
 	char	**nb_array;
 	char	*joined;
+	int		size;
 
 	*values = NULL;
 	if (ac < 2)
-		return (0);
+		return (-1);
 	joined = join_args(ac, av);
 	if (!joined)
-		return (0);
+		return (-1);
 	nb_array = ft_split(joined, ' ');
 	free(joined);
+	if (!nb_array)
+		return (-1);
+	if (!nb_array[0])
+		return (free_nb_array(nb_array), -1);
 	if (!check_nb_array(nb_array))
-		return (0);
-	return (fill_values(nb_array, values, get_size(nb_array)));
+		return (-1);
+	size = get_size(nb_array);
+	if (fill_values(nb_array, values, size) == 0)
+		return (-1);
+	return (size);
 }

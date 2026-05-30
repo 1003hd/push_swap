@@ -22,12 +22,18 @@ typedef struct s_stack
 	t_list	*head;
 }	t_stack;
 
-// Parsing
+// Parsing — returns size on success, -1 on error
 int		parse(int ac, char **av, int **values);
 
 // Stack creation
 t_stack	*create_stack(int *values, int size);
 void	free_stack(t_stack *stack);
+
+// Error
+void	error_exit(void);
+
+// Error
+void	error_exit(void);
 
 // Stack operations
 
