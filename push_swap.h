@@ -23,4 +23,7 @@ typedef struct s_stack
 	t_list	*head;
 }	t_stack;
 
+int		parse_stack(t_stack *stack, int argc, char **argv);
+void	print_stack(t_stack *stack);
+
 #endif
