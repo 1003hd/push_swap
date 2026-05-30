@@ -6,21 +6,11 @@
 /*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 16:30:19 by baserbet          #+#    #+#             */
-/*   Updated: 2026/05/30 17:00:11 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/05/30 20:29:50 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	free_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
-}
 
 static int	is_valid_nb(char *s)
 {
@@ -44,18 +34,18 @@ static int	is_valid_nb(char *s)
 	return (1);
 }
 
-static int	has_dup(char **tab)
+static int	has_dup(char **nb_array)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (tab[i])
+	while (nb_array[i])
 	{
 		j = i + 1;
-		while (tab[j])
+		while (nb_array[j])
 		{
-			if (ft_atoi(tab[i]) == ft_atoi(tab[j]))
+			if (ft_atoi(nb_array[i]) == ft_atoi(nb_array[j]))
 				return (1);
 			j++;
 		}
@@ -64,25 +54,25 @@ static int	has_dup(char **tab)
 	return (0);
 }
 
-static int	check_tab(char **tab)
+static int	check_nb_array(char **nb_array)
 {
 	int	i;
 
 	i = 0;
-	if (!tab)
+	if (!nb_array)
 		return (0);
-	while (tab[i])
+	while (nb_array[i])
 	{
-		if (!is_valid_nb(tab[i]))
+		if (!is_valid_nb(nb_array[i]))
 		{
-			free_tab(tab);
+			free_nb_array(nb_array);
 			return (0);
 		}
 		i++;
 	}
-	if (has_dup(tab))
+	if (has_dup(nb_array))
 	{
-		free_tab(tab);
+		free_nb_array(nb_array);
 		return (0);
 	}
 	return (1);
@@ -90,7 +80,7 @@ static int	check_tab(char **tab)
 
 int	parse(int ac, char **av, int **values)
 {
-	char	**tab;
+	char	**nb_array;
 	char	*joined;
 
 	*values = NULL;
@@ -99,9 +89,9 @@ int	parse(int ac, char **av, int **values)
 	joined = join_args(ac, av);
 	if (!joined)
 		return (0);
-	tab = ft_split(joined, ' ');
+	nb_array = ft_split(joined, ' ');
 	free(joined);
-	if (!check_tab(tab))
+	if (!check_nb_array(nb_array))
 		return (0);
-	return (fill_values(tab, values, get_size(tab)));
+	return (fill_values(nb_array, values, get_size(nb_array)));
 }
