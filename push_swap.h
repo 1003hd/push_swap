@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:46 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/01 13:00:10 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/01 14:30:14 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,18 @@ void	free_stack(t_stack *stack);
 // Error
 void	error_exit(void);
 
-// Error
-void	error_exit(void);
-
 // Stack operations
-
-void sa(t_stack **stack_a);
+void	sa(t_stack **a);
+void	sb(t_stack **b);
+void	ss(t_stack **a, t_stack **b);
+void	ra(t_stack **a);
+void	rb(t_stack **b);
+void	rr(t_stack **a, t_stack **b);
+void	pa(t_stack **a, t_stack **b);
+void	pb(t_stack **a, t_stack **b);
+void	rra(t_stack **a);
+void	rrb(t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
 
 // Utils
 int		is_sorted(t_stack *stack);

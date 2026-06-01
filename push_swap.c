@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:33 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/01 13:37:02 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/01 17:30:00 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	error_exit(void)
 {
 	write(2, "Error\n", 6);
 }
+
 //Printing stack, purely for debugging 
 void	print_stack(t_stack *stack)
 {
@@ -30,6 +31,7 @@ void	print_stack(t_stack *stack)
 		current = current->next;
 	}
 }
+
 int	main(int ac, char **av)
 {
 	t_stack	*stack;

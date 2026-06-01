@@ -6,7 +6,7 @@
 /*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 16:51:40 by baserbet          #+#    #+#             */
-/*   Updated: 2026/05/30 20:22:12 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/01 13:49:15 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	is_sorted(t_stack *stack)
 	cur = stack->head;
 	while (cur->next)
 	{
-		a = (int)(intptr_t)cur->content;
-		b = (int)(intptr_t)cur->next->content;
+		a = *(int *)cur->content;
+		b = *(int *)cur->next->content;
 		if (a > b)
 			return (0);
 		cur = cur->next;
@@ -43,8 +43,8 @@ int	is_decreasing(t_stack *stack)
 	cur = stack->head;
 	while (cur->next)
 	{
-		a = (int)(intptr_t)cur->content;
-		b = (int)(intptr_t)cur->next->content;
+		a = *(int *)cur->content;
+		b = *(int *)cur->next->content;
 		if (a < b)
 			return (0);
 		cur = cur->next;
