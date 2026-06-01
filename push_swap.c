@@ -6,7 +6,7 @@
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:33 by baserbet          #+#    #+#             */
-/*   Updated: 2026/05/30 21:04:50 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/01 13:37:02 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ int	main(int ac, char **av)
 		error_exit();
 		return (1);
 	}
+	printf("Before \n");
+	print_stack(stack);
+	sa((&stack));
+	printf("after: \n");
 	print_stack(stack);
 	free_stack(stack);
 	return (0);

@@ -3,16 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/30 16:15:34 by baserbet          #+#    #+#              #
-#    Updated: 2026/05/30 20:36:36 by baserbet         ###   ########.fr        #
+#    Updated: 2026/06/01 12:41:48 by aselezen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC		= push_swap.c parsing.c parsing_utils.c create_stacks.c \
 		operation_stacks.c utils.c presorting.c
-
 OBJ		= ${SRC:.c=.o}
 
 CFLAGS	= -Wall -Werror -Wextra
