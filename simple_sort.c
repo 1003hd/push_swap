@@ -6,7 +6,7 @@
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:54:25 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/03 17:24:25 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/03 18:19:19 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ static int	find_max_pos(t_stack *stack)
 	int		i;
 
 	curr = stack->head;
-	max = curr->content;
+	max = *(int *)curr->content;
 	max_pos = 0;
 	i = 0;
 	while (curr)
 	{
-		if (curr->content > max)
+		if (*(int *)curr->content > max)
 		{
-			max = curr->content;
+			max = *(int *)curr->content;
 			max_pos = i;
 		}
 		curr = curr->next;

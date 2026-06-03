@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_stacks.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 17:19:05 by baserbet          #+#    #+#             */
-/*   Updated: 2026/05/30 20:21:38 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/03 18:33:58 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,13 @@ t_stack	*create_stack(int *values, int size)
 		i++;
 	}
 	return (stack);
+}
+t_stack *create_empty_stack(void)
+{
+    t_stack *stack;
+
+    stack = ft_calloc(1, sizeof(t_stack));
+    if (!stack)
+        return NULL;
+    return stack;
 }

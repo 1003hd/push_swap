@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:33 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/01 17:30:00 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/03 18:35:35 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	print_stack(t_stack *stack)
 
 int	main(int ac, char **av)
 {
-	t_stack	*stack;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 	int		*values;
 	int		size;
 
@@ -47,18 +48,19 @@ int	main(int ac, char **av)
 		error_exit();
 		return (1);
 	}
-	stack = create_stack(values, size);
+	stack_a = create_stack(values, size);
+	stack_b = create_empty_stack();
 	free(values);
-	if (!stack)
+	if (!stack_a)
 	{
 		error_exit();
 		return (1);
 	}
 	printf("Before \n");
-	print_stack(stack);
-	sa((&stack));
+	print_stack(stack_a);
+	selection_sort_stacks(&stack_a, &stack_b);
 	printf("after: \n");
-	print_stack(stack);
-	free_stack(stack);
+	print_stack(stack_a);
+	free_stack(stack_a);
 	return (0);
 }

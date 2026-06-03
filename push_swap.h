@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:46 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/01 14:30:14 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/03 18:34:31 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		parse(int ac, char **av, int **values);
 
 // Stack creation
 t_stack	*create_stack(int *values, int size);
+t_stack *create_empty_stack(void);
 void	free_stack(t_stack *stack);
 
 // Error
@@ -52,5 +53,9 @@ int		fill_values(char **nb_array, int **values, int size);
 int		get_size(char **nb_array);
 char	*join_args(int ac, char **av);
 void	free_nb_array(char **nb_array);
+
+//Sorting
+
+void	selection_sort_stacks(t_stack **a, t_stack **b);
 
 #endif
