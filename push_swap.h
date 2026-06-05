@@ -6,7 +6,7 @@
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:46 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/03 18:34:31 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/05 17:53:50 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	free_nb_array(char **nb_array);
 //Sorting
 
 void	selection_sort_stacks(t_stack **a, t_stack **b);
+void	medium_sort_stacks(t_stack **a, t_stack **b);
 void	sort_three(t_stack **a);
 void	radix_sort_stacks(t_stack **a, t_stack **b);
 
