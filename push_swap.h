@@ -57,5 +57,6 @@ void	free_nb_array(char **nb_array);
 //Sorting
 
 void	selection_sort_stacks(t_stack **a, t_stack **b);
+void	medium_sort_stacks(t_stack **a, t_stack **b);
 
 #endif
