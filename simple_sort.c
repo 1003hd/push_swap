@@ -67,3 +67,25 @@ void	selection_sort_stacks(t_stack **a, t_stack **b)
 		pa(a, b);
 	}
 }
+
+// Optimal sort for exactly 3 elements (max 2 operations).
+void	sort_three(t_stack **a)
+{
+	int	x;
+	int	y;
+	int	z;
+
+	x = *(int *)(*a)->head->content;
+	y = *(int *)(*a)->head->next->content;
+	z = *(int *)(*a)->head->next->next->content;
+	if (x > y && y < z && x < z)
+		sa(a);
+	else if (x > y && y > z)
+		(sa(a), rra(a));
+	else if (x > y && y < z && x > z)
+		ra(a);
+	else if (x < y && y > z && x < z)
+		(sa(a), ra(a));
+	else if (x < y && y > z && x > z)
+		rra(a);
+}

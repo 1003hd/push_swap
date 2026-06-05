@@ -12,7 +12,8 @@
 
 SRC		= push_swap.c parsing.c parsing_utils.c create_stacks.c \
 		operation_stacks.c utils.c presorting.c push_stacks.c \
-		rotate_stacks.c reverse_rotate_stacks.c simple_sort.c
+		rotate_stacks.c reverse_rotate_stacks.c simple_sort.c \
+		complex_sort.c
 OBJ		= ${SRC:.c=.o}
 
 CFLAGS	= -Wall -Werror -Wextra
