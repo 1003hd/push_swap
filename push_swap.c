@@ -51,16 +51,17 @@ int	main(int ac, char **av)
 	stack_a = create_stack(values, size);
 	stack_b = create_empty_stack();
 	free(values);
-	if (!stack_a)
+	if (!stack_a || !stack_b)
 	{
 		error_exit();
 		return (1);
 	}
 	printf("Before \n");
 	print_stack(stack_a);
-	selection_sort_stacks(&stack_a, &stack_b);
-	printf("after: \n");
+	radix_sort_stacks(&stack_a, &stack_b);
+	printf("after: \n"); //ranks will be printed out, not values
 	print_stack(stack_a);
 	free_stack(stack_a);
+	free_stack(stack_b);
 	return (0);
 }

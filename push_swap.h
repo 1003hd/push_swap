@@ -57,5 +57,7 @@ void	free_nb_array(char **nb_array);
 //Sorting
 
 void	selection_sort_stacks(t_stack **a, t_stack **b);
+void	sort_three(t_stack **a);
+void	radix_sort_stacks(t_stack **a, t_stack **b);
 
 #endif
