@@ -3,42 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:33 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/03 18:35:35 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/06 16:16:52 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//print "Error\n" to stderr (fd 2), as the subject mandates.
 void	error_exit(void)
 {
 	write(2, "Error\n", 6);
 }
 
-//Printing stack, purely for debugging 
-void	print_stack(t_stack *stack)
-{
-	t_list	*current;
-
-	ft_printf("Stack (size: %d):\n", stack->size);
-	current = stack->head;
-	while (current)
-	{
-		ft_printf("  %d\n", *(int *)current->content);
-		current = current->next;
-	}
-}
-
 int	main(int ac, char **av)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		*values;
-	int		size;
+	t_stack		*stack_a;
+	t_stack		*stack_b;
+	int			*values;
+	int			size;
+	int			strategy;
+	int			bench;
+	t_counts	c;
+	t_run		r;
 
+	if (ac < 2)
+		return (0);
+	strategy = parse_flags(&ac, &av, &bench);
+	if (strategy < 0)
+		return (1);
 	if (ac < 2)
 		return (0);
 	values = NULL;
@@ -56,11 +50,12 @@ int	main(int ac, char **av)
 		error_exit();
 		return (1);
 	}
-	printf("Before \n");
-	print_stack(stack_a);
-	radix_sort_stacks(&stack_a, &stack_b);
-	printf("after: \n"); //ranks will be printed out, not values
-	print_stack(stack_a);
+	ft_memset(&c, 0, sizeof(t_counts));
+	r.disorder = compute_disorder(stack_a);
+	r.c = &c;
+	strategy = run_strategy(&stack_a, &stack_b, strategy, &r);
+	if (bench)
+		print_bench(r.disorder, strategy, &c);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

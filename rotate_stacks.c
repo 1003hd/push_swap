@@ -6,7 +6,7 @@
 /*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 14:25:54 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/01 18:11:04 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/06 15:22:30 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,29 @@ static void	rotate(t_stack **s)
 }
 
 // Shifts all elements of stack a up by one, first becomes last, prints "ra"
-void	ra(t_stack **a)
+void	ra(t_stack **a, t_counts *c)
 {
 	rotate(a);
 	write(1, "ra\n", 3);
+	if (c)
+		c->ra++;
 }
 
 // Shifts all elements of stack b up by one, first becomes last, prints "rb"
-void	rb(t_stack **b)
+void	rb(t_stack **b, t_counts *c)
 {
 	rotate(b);
 	write(1, "rb\n", 3);
+	if (c)
+		c->rb++;
 }
 
 // Applies rotate to both stacks simultaneously, prints "rr"
-void	rr(t_stack **a, t_stack **b)
+void	rr(t_stack **a, t_stack **b, t_counts *c)
 {
 	rotate(a);
 	rotate(b);
 	write(1, "rr\n", 3);
+	if (c)
+		c->rr++;
 }

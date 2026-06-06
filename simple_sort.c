@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/03 16:54:25 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/04 18:23:25 by aselezen         ###   ########.fr       */
+/*   Created: 2026/06/06 16:07:40 by baserbet          #+#    #+#             */
+/*   Updated: 2026/06/06 16:07:42 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
 static int	find_max_pos(t_stack *stack)
 {
@@ -36,7 +36,7 @@ static int	find_max_pos(t_stack *stack)
 	return (max_pos);
 }
 
-static void	move_max_to_top_b(t_stack **b)
+static void	move_max_to_top_b(t_stack **b, t_counts *c)
 {
 	int	pos;
 	int	size;
@@ -46,30 +46,31 @@ static void	move_max_to_top_b(t_stack **b)
 	if (pos <= size / 2)
 	{
 		while (pos-- > 0)
-			rb(b);
+			rb(b, c);
 	}
 	else
 	{
 		pos = size - pos;
 		while (pos-- > 0)
-			rrb(b);
+			rrb(b, c);
 	}
 }
 
-void	selection_sort_stacks(t_stack **a, t_stack **b)
+void	selection_sort_stacks(t_stack **a, t_stack **b, t_counts *c)
 {
+	if ((*a)->size < 2 || is_sorted(*a))
+		return ;
 	while ((*a)->size > 0)
-		pb(a, b);
-
+		pb(a, b, c);
 	while ((*b)->size > 0)
 	{
-		move_max_to_top_b(b);
-		pa(a, b);
+		move_max_to_top_b(b, c);
+		pa(a, b, c);
 	}
 }
 
 // Optimal sort for exactly 3 elements (max 2 operations).
-void	sort_three(t_stack **a)
+void	sort_three(t_stack **a, t_counts *c)
 {
 	int	x;
 	int	y;
@@ -79,13 +80,19 @@ void	sort_three(t_stack **a)
 	y = *(int *)(*a)->head->next->content;
 	z = *(int *)(*a)->head->next->next->content;
 	if (x > y && y < z && x < z)
-		sa(a);
+		sa(a, c);
 	else if (x > y && y > z)
-		(sa(a), rra(a));
+	{
+		sa(a, c);
+		rra(a, c);
+	}
 	else if (x > y && y < z && x > z)
-		ra(a);
+		ra(a, c);
 	else if (x < y && y > z && x < z)
-		(sa(a), ra(a));
+	{
+		sa(a, c);
+		ra(a, c);
+	}
 	else if (x < y && y > z && x > z)
-		rra(a);
+		rra(a, c);
 }

@@ -6,7 +6,7 @@
 /*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 16:51:40 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/01 13:49:15 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/06 16:13:33 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,33 @@ int	is_decreasing(t_stack *stack)
 		cur = cur->next;
 	}
 	return (1);
+}
+
+// Counts inverted pairs / total pairs, returns 0.0 if already sorted
+// 1.0 if fully reversed. Must be called before any sorting moves.
+double	compute_disorder(t_stack *stack)
+{
+	t_list	*ci;
+	t_list	*cj;
+	double	mistakes;
+	double	total;
+
+	if (!stack->head || stack->size < 2)
+		return (0.0);
+	mistakes = 0;
+	total = 0;
+	ci = stack->head;
+	while (ci)
+	{
+		cj = ci->next;
+		while (cj)
+		{
+			total++;
+			if (*(int *)ci->content > *(int *)cj->content)
+				mistakes++;
+			cj = cj->next;
+		}
+		ci = ci->next;
+	}
+	return (mistakes / total);
 }

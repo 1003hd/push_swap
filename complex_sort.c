@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   complex_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 00:00:00 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/05 00:00:00 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/06 15:11:07 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Counts how many elements of vals are strictly smaller than v.
-// Since values are distinct, this gives the unique rank of v (0..size-1).
 static int	count_smaller(int *vals, int size, int v)
 {
 	int	i;
@@ -30,8 +28,6 @@ static int	count_smaller(int *vals, int size, int v)
 	return (c);
 }
 
-// Replaces every value by its rank index (0..size-1) so radix bit count
-// is bounded by log2(size). Returns 0 on malloc failure, 1 otherwise.
 static int	normalize(t_stack *a)
 {
 	int		*vals;
@@ -51,14 +47,14 @@ static int	normalize(t_stack *a)
 	cur = a->head;
 	while (cur)
 	{
-		*(int *)cur->content = count_smaller(vals, a->size, *(int *)cur->content);
+		*(int *)cur->content = count_smaller(vals, a->size,
+				*(int *)cur->content);
 		cur = cur->next;
 	}
 	free(vals);
 	return (1);
 }
 
-// Number of bits needed to represent the largest index (size - 1).
 static int	get_max_bits(int size)
 {
 	int	bits;
@@ -69,9 +65,7 @@ static int	get_max_bits(int size)
 	return (bits);
 }
 
-// Binary radix sort: for each bit, push elements with bit==0 to b,
-// rotate elements with bit==1 to the bottom of a, then pull b back.
-static void	radix(t_stack **a, t_stack **b)
+static void	radix(t_stack **a, t_stack **b, t_counts *c)
 {
 	int	max_bits;
 	int	bit;
@@ -87,28 +81,33 @@ static void	radix(t_stack **a, t_stack **b)
 		while (i < size)
 		{
 			if (((*(int *)(*a)->head->content) >> bit) & 1)
-				ra(a);
+				ra(a, c);
 			else
-				pb(a, b);
+				pb(a, b, c);
 			i++;
 		}
 		while ((*b)->size > 0)
-			pa(a, b);
+			pa(a, b, c);
 		bit++;
 	}
 }
 
-// Entry point. Handles trivial sizes, normalizes to indices, then sorts.
-void	radix_sort_stacks(t_stack **a, t_stack **b)
+void	radix_sort_stacks(t_stack **a, t_stack **b, t_counts *c)
 {
 	if ((*a)->size < 2 || is_sorted(*a))
 		return ;
 	if ((*a)->size == 2)
-		return (sa(a));
+	{
+		sa(a, c);
+		return ;
+	}
 	if (!normalize(*a))
-		return (error_exit());
+	{
+		error_exit();
+		return ;
+	}
 	if ((*a)->size == 3)
-		sort_three(a);
+		sort_three(a, c);
 	else
-		radix(a, b);
+		radix(a, b, c);
 }

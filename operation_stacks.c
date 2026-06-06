@@ -6,7 +6,7 @@
 /*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 17:18:07 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/01 18:13:30 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/06 15:23:02 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,29 @@ static void	swap(t_stack **s)
 }
 
 // Swaps the top two elements of stack a, prints "sa"
-// Write was added so that the function wouldn't print-
-// anything to stdout which the subject requires
-void	sa(t_stack **a)
+void	sa(t_stack **a, t_counts *c)
 {
 	swap(a);
 	write(1, "sa\n", 3);
+	if (c)
+		c->sa++;
 }
 
 // Swaps the top two elements of stack b, prints "sb"
-void	sb(t_stack **b)
+void	sb(t_stack **b, t_counts *c)
 {
 	swap(b);
 	write(1, "sb\n", 3);
+	if (c)
+		c->sb++;
 }
 
 // Swaps the top two elements of both stacks simultaneously, prints "ss"
-void	ss(t_stack **a, t_stack **b)
+void	ss(t_stack **a, t_stack **b, t_counts *c)
 {
 	swap(a);
 	swap(b);
 	write(1, "ss\n", 3);
+	if (c)
+		c->ss++;
 }
