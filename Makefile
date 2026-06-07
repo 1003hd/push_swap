@@ -16,6 +16,13 @@ SRC		= push_swap.c parsing.c parsing_utils.c create_stacks.c \
 		complex_sort.c medium_sort.c strategy.c
 OBJ		= ${SRC:.c=.o}
 
+CHK_SRC	= checker.c checker_utils.c parsing.c parsing_utils.c \
+		create_stacks.c utils.c operation_stacks.c push_stacks.c \
+		rotate_stacks.c reverse_rotate_stacks.c
+CHK_OBJ	= ${CHK_SRC:.c=.o}
+CHK_HEAD	= checker.h push_swap.h
+CHECKER	= checker
+
 CFLAGS	= -Wall -Werror -Wextra
 HEAD	= push_swap.h
 CC		= cc
@@ -28,6 +35,8 @@ LIB		= ${LIB_DIR}/libft.a
 
 all:	${NAME}
 
+bonus:	${CHECKER}
+
 $(LIB):
 	make -C $(LIB_DIR)
 
@@ -35,20 +44,24 @@ ${NAME}: $(LIB) ${OBJ}
 	${CC} $(CFLAGS) ${OBJ} $(LIB) -o $(NAME)
 	@echo "Compilation successful."
 
+${CHECKER}: $(LIB) ${CHK_OBJ}
+	${CC} $(CFLAGS) ${CHK_OBJ} $(LIB) -o $(CHECKER)
+	@echo "Checker compilation successful."
+
 %.o:		%.c ${HEAD}
 	@${CC} ${CFLAGS} -c $< -o $@
 
 clean:
-	@${RM} ${OBJ}
+	@${RM} ${OBJ} ${CHK_OBJ}
 	@$(MAKE) -C $(LIB_DIR) clean
 	@echo "Objects files has been deleted."
 
 
 fclean: clean
-	@${RM} ${NAME}
+	@${RM} ${NAME} ${CHECKER}
 	@$(MAKE) -C $(LIB_DIR) fclean
 	@echo "The ${NAME} has been deleted."
 
 re:		fclean all
 
-.PHONY: all clean fclean re test
+.PHONY: all bonus clean fclean re test

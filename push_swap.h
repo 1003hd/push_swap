@@ -56,6 +56,12 @@ void	free_stack(t_stack *stack);
 // Error
 void	error_exit(void);
 
+// Low-level move primitives (silent; shared with the checker)
+void	swap(t_stack **s);
+void	push(t_stack **dst, t_stack **src);
+void	rotate(t_stack **s);
+void	reverse_rotate(t_stack **s);
+
 // Stack operations (all accept an optional t_counts * — pass NULL to skip)
 void	sa(t_stack **a, t_counts *c);
 void	sb(t_stack **b, t_counts *c);

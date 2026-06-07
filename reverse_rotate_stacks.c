@@ -16,7 +16,7 @@
 // and prepends it to the head
 // The last element becomes the first. O(n) due to the traversal
 // Does nothing if the stack has fewer than 2 elements
-static void	reverse_rotate(t_stack **s)
+void	reverse_rotate(t_stack **s)
 {
 	t_list	*prev;
 	t_list	*last;

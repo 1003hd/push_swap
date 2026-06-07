@@ -14,7 +14,7 @@
 
 // Relinks the first two nodes of a stack so the second becomes the head
 // Does nothing if the stack has fewer than 2 elements
-static void	swap(t_stack **s)
+void	swap(t_stack **s)
 {
 	t_list	*first;
 	t_list	*second;

@@ -15,7 +15,7 @@
 // Detaches the head node and appends it to the tail
 // The first element becomes the last. O(n) due to the traversal
 // Does nothing if the stack has fewer than 2 elements
-static void	rotate(t_stack **s)
+void	rotate(t_stack **s)
 {
 	t_list	*first;
 	t_list	*last;
