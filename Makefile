@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+         #
+#    By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/30 16:15:34 by baserbet          #+#    #+#              #
-#    Updated: 2026/06/09 19:01:46 by aselezen         ###   ########.fr        #
+#    Updated: 2026/06/09 15:06:37 by baserbet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC		= push_swap.c parsing.c parsing_utils.c create_stacks.c \
 		operation_stacks.c utils.c push_stacks.c \
 		rotate_stacks.c reverse_rotate_stacks.c simple_sort.c \
-		complex_sort.c medium_sort.c strategy.c bench.c
+		complex_sort.c medium_sort.c strategy.c
 OBJ		= ${SRC:.c=.o}
  
 CHK_SRC	= checker.c checker_utils.c parsing.c parsing_utils.c \
@@ -34,7 +34,9 @@ LIB		= ${LIB_DIR}/libft.a
  
  
 all:	${NAME}
-
+ 
+bonus:	${CHECKER}
+ 
 $(LIB):
 	make -C $(LIB_DIR)
  
