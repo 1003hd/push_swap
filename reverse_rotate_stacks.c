@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate_stacks.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 14:26:52 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/06 15:22:11 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:12:53 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 // Does nothing if the stack has fewer than 2 elements
 void	reverse_rotate(t_stack **s)
 {
-	t_list	*prev;
-	t_list	*last;
+	t_node	*prev;
+	t_node	*last;
 
 	if (!(*s) || (*s)->size < 2)
 		return ;

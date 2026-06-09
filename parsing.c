@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 16:30:19 by baserbet          #+#    #+#             */
-/*   Updated: 2026/05/30 20:29:50 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:09:33 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//valid: optional one sign, at least one digit, only digits, and the
-//value fits in int. accumulate in long so overflow is caught before
-//the int truncation that ft_atoi would silently do.
 static int	is_valid_nb(char *s)
 {
 	long	n;

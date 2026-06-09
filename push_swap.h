@@ -6,7 +6,7 @@
 /*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:46 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/06 16:11:49 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/09 16:00:04 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,18 @@
 # include "libft/libft.h"
 # include <limits.h>
 
+// Singly-linked stack node. Mirrors t_list but stores the int inline,
+// so no void * content / cast is needed.
+typedef struct s_node
+{
+	int				value;
+	struct s_node	*next;
+}	t_node;
+
 typedef struct s_stack
 {
 	int		size;
-	t_list	*head;
+	t_node	*head;
 }	t_stack;
 
 // Op counters for --bench mode
@@ -43,6 +51,8 @@ typedef struct s_run
 {
 	double		disorder;
 	t_counts	*c;
+	int			bench;
+	int			strategy;
 }	t_run;
 
 // Parsing — returns size on success, -1 on error
@@ -84,7 +94,7 @@ char	*join_args(int ac, char **av);
 void	free_nb_array(char **nb_array);
 double	compute_disorder(t_stack *stack);
 int		parse_flags(int *ac, char ***av, int *bench);
-int		run_strategy(t_stack **a, t_stack **b, int strategy, t_run *r);
+int		run_strategy(t_stack **a, t_stack **b, t_run *r);
 void	print_bench(double disorder, int strategy, t_counts *c);
 int		total_ops(t_counts *c);
 

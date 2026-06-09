@@ -12,34 +12,57 @@
 
 #include "push_swap.h"
 
+static t_node	*new_node(int value)
+{
+	t_node	*node;
+
+	node = malloc(sizeof(t_node));
+	if (!node)
+		return (NULL);
+	node->value = value;
+	node->next = NULL;
+	return (node);
+}
+
 void	free_stack(t_stack *stack)
 {
+	t_node	*cur;
+	t_node	*next;
+
 	if (!stack)
 		return ;
-	ft_lstclear(&stack->head, free);
+	cur = stack->head;
+	while (cur)
+	{
+		next = cur->next;
+		free(cur);
+		cur = next;
+	}
 	free(stack);
 }
 
 t_stack	*create_stack(int *values, int size)
 {
 	t_stack	*stack;
-	t_list	*node;
+	t_node	*node;
+	t_node	**tail;
 	int		i;
 
 	stack = ft_calloc(1, sizeof(t_stack));
 	if (!stack)
 		return (NULL);
+	tail = &stack->head;
 	i = 0;
 	while (i < size)
 	{
-		node = ft_lstnew(malloc(sizeof(int)));
+		node = new_node(values[i]);
 		if (!node)
 		{
 			free_stack(stack);
 			return (NULL);
 		}
-		*(int *)node->content = values[i];
-		ft_lstadd_back(&stack->head, node);
+		*tail = node;
+		tail = &node->next;
 		stack->size++;
 		i++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_stacks.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 14:25:54 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/06 15:22:30 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:12:56 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 // Does nothing if the stack has fewer than 2 elements
 void	rotate(t_stack **s)
 {
-	t_list	*first;
-	t_list	*last;
+	t_node	*first;
+	t_node	*last;
 
 	if (!(*s) || (*s)->size < 2)
 		return ;
