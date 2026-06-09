@@ -6,7 +6,7 @@
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 16:07:40 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/09 18:12:58 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/09 19:22:05 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	selection_sort_stacks(t_stack **a, t_stack **b, t_counts *c)
 {
 	if ((*a)->size < 2 || is_sorted(*a))
 		return ;
+	if ((*a)->size == 3)
+		return sort_three(a, c);
 	while ((*a)->size > 0)
 		pb(a, b, c);
 	while ((*b)->size > 0)
