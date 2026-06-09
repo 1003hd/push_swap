@@ -16,10 +16,18 @@
 # include "libft/libft.h"
 # include <limits.h>
 
+// Singly-linked stack node. Mirrors t_list but stores the int inline,
+// so no void * content / cast is needed.
+typedef struct s_node
+{
+	int				value;
+	struct s_node	*next;
+}	t_node;
+
 typedef struct s_stack
 {
 	int		size;
-	t_list	*head;
+	t_node	*head;
 }	t_stack;
 
 // Op counters for --bench mode

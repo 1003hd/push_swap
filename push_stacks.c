@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_stacks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 14:25:07 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/06 15:21:52 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:12:45 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // Does nothing if src is empty
 void	push(t_stack **dst, t_stack **src)
 {
-	t_list	*node;
+	t_node	*node;
 
 	if (!(*src) || (*src)->size == 0)
 		return ;

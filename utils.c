@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 16:51:40 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/06 16:13:33 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:14:21 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_sorted(t_stack *stack)
 {
-	t_list	*cur;
+	t_node	*cur;
 	int		a;
 	int		b;
 
@@ -23,8 +23,8 @@ int	is_sorted(t_stack *stack)
 	cur = stack->head;
 	while (cur->next)
 	{
-		a = *(int *)cur->content;
-		b = *(int *)cur->next->content;
+		a = cur->value;
+		b = cur->next->value;
 		if (a > b)
 			return (0);
 		cur = cur->next;
@@ -34,7 +34,7 @@ int	is_sorted(t_stack *stack)
 
 int	is_decreasing(t_stack *stack)
 {
-	t_list	*cur;
+	t_node	*cur;
 	int		a;
 	int		b;
 
@@ -43,8 +43,8 @@ int	is_decreasing(t_stack *stack)
 	cur = stack->head;
 	while (cur->next)
 	{
-		a = *(int *)cur->content;
-		b = *(int *)cur->next->content;
+		a = cur->value;
+		b = cur->next->value;
 		if (a < b)
 			return (0);
 		cur = cur->next;
@@ -56,8 +56,8 @@ int	is_decreasing(t_stack *stack)
 // 1.0 if fully reversed. Must be called before any sorting moves.
 double	compute_disorder(t_stack *stack)
 {
-	t_list	*ci;
-	t_list	*cj;
+	t_node	*ci;
+	t_node	*cj;
 	double	mistakes;
 	double	total;
 
@@ -72,7 +72,7 @@ double	compute_disorder(t_stack *stack)
 		while (cj)
 		{
 			total++;
-			if (*(int *)ci->content > *(int *)cj->content)
+			if (ci->value > cj->value)
 				mistakes++;
 			cj = cj->next;
 		}

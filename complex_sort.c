@@ -31,7 +31,7 @@ static int	count_smaller(int *vals, int size, int v)
 static int	normalize(t_stack *a)
 {
 	int		*vals;
-	t_list	*cur;
+	t_node	*cur;
 	int		i;
 
 	vals = malloc(sizeof(int) * a->size);
@@ -41,14 +41,13 @@ static int	normalize(t_stack *a)
 	i = 0;
 	while (cur)
 	{
-		vals[i++] = *(int *)cur->content;
+		vals[i++] = cur->value;
 		cur = cur->next;
 	}
 	cur = a->head;
 	while (cur)
 	{
-		*(int *)cur->content = count_smaller(vals, a->size,
-				*(int *)cur->content);
+		cur->value = count_smaller(vals, a->size, cur->value);
 		cur = cur->next;
 	}
 	free(vals);
@@ -80,7 +79,7 @@ static void	radix(t_stack **a, t_stack **b, t_counts *c)
 		i = 0;
 		while (i < size)
 		{
-			if (((*(int *)(*a)->head->content) >> bit) & 1)
+			if (((*a)->head->value >> bit) & 1)
 				ra(a, c);
 			else
 				pb(a, b, c);
