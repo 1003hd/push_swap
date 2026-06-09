@@ -6,7 +6,7 @@
 /*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:46 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/06 16:11:49 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/09 16:00:04 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_run
 {
 	double		disorder;
 	t_counts	*c;
+	int			bench;
+	int			strategy;
 }	t_run;
 
 // Parsing — returns size on success, -1 on error
@@ -55,6 +57,12 @@ void	free_stack(t_stack *stack);
 
 // Error
 void	error_exit(void);
+
+// Low-level move primitives (silent; shared with the checker)
+void	swap(t_stack **s);
+void	push(t_stack **dst, t_stack **src);
+void	rotate(t_stack **s);
+void	reverse_rotate(t_stack **s);
 
 // Stack operations (all accept an optional t_counts * — pass NULL to skip)
 void	sa(t_stack **a, t_counts *c);
@@ -78,7 +86,7 @@ char	*join_args(int ac, char **av);
 void	free_nb_array(char **nb_array);
 double	compute_disorder(t_stack *stack);
 int		parse_flags(int *ac, char ***av, int *bench);
-int		run_strategy(t_stack **a, t_stack **b, int strategy, t_run *r);
+int		run_strategy(t_stack **a, t_stack **b, t_run *r);
 void	print_bench(double disorder, int strategy, t_counts *c);
 int		total_ops(t_counts *c);
 

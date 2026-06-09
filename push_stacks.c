@@ -15,7 +15,7 @@
 // Detaches the head node of src and prepends it to dst
 // Updates size on both stacks
 // Does nothing if src is empty
-static void	push(t_stack **dst, t_stack **src)
+void	push(t_stack **dst, t_stack **src)
 {
 	t_list	*node;
 

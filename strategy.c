@@ -6,7 +6,7 @@
 /*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 16:09:51 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/06 16:14:17 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/09 16:12:11 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,18 @@ int	parse_flags(int *ac, char ***av, int *bench)
 	return (strategy);
 }
 
-int	run_strategy(t_stack **a, t_stack **b, int strategy, t_run *r)
+// Updated: removed int strategy param; now reads r->strategy directly
+int	run_strategy(t_stack **a, t_stack **b, t_run *r)
 {
 	int	used;
+	int	strategy;
 
+	strategy = r->strategy;
 	used = strategy;
 	if (strategy == 4)
 	{
+		if ((*a)->size <= 5)
+			used = 1;
 		if (r->disorder < 0.2)
 			used = 1;
 		else if (r->disorder < 0.8)
