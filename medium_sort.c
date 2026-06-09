@@ -3,33 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   medium_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 16:51:40 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/09 15:44:00 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:36:36 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Returns rank of val across both stacks (how many values are smaller).
 static int	get_rank(t_stack *a, t_stack *b, int val)
 {
-	t_list	*cur;
+	t_node	*cur;
 	int		rank;
 
 	rank = 0;
 	cur = a->head;
 	while (cur)
 	{
-		if (*(int *)cur->content < val)
+		if (cur->value < val)
 			rank++;
 		cur = cur->next;
 	}
 	cur = b->head;
 	while (cur)
 	{
-		if (*(int *)cur->content < val)
+		if (cur->value < val)
 			rank++;
 		cur = cur->next;
 	}
@@ -38,20 +37,20 @@ static int	get_rank(t_stack *a, t_stack *b, int val)
 
 static int	find_max_pos(t_stack *b)
 {
-	t_list	*cur;
+	t_node	*cur;
 	int		max;
 	int		max_pos;
 	int		i;
 
 	cur = b->head;
-	max = *(int *)cur->content;
+	max = cur->value;
 	max_pos = 0;
 	i = 0;
 	while (cur)
 	{
-		if (*(int *)cur->content > max)
+		if (cur->value > max)
 		{
-			max = *(int *)cur->content;
+			max = cur->value;
 			max_pos = i;
 		}
 		cur = cur->next;
@@ -90,7 +89,7 @@ static void	push_to_b(t_stack **a, t_stack **b, int sz, t_counts *c)
 	pushed = 0;
 	while ((*a)->size > 0)
 	{
-		r = get_rank(*a, *b, *(int *)(*a)->head->content);
+		r = get_rank(*a, *b, (*a)->head->value);
 		if (r < ceiling)
 		{
 			pb(a, b, c);

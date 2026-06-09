@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:46 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/09 16:00:04 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/09 19:16:36 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,18 @@
 # include "libft/libft.h"
 # include <limits.h>
 
+// Singly-linked stack node. Mirrors t_list but stores the int inline,
+// so no void * content / cast is needed.
+typedef struct s_node
+{
+	int				value;
+	struct s_node	*next;
+}	t_node;
+
 typedef struct s_stack
 {
 	int		size;
-	t_list	*head;
+	t_node	*head;
 }	t_stack;
 
 // Op counters for --bench mode

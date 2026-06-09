@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 16:07:40 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/06 16:07:42 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/09 19:22:05 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 static int	find_max_pos(t_stack *stack)
 {
-	t_list	*curr;
+	t_node	*curr;
 	int		max;
 	int		max_pos;
 	int		i;
 
 	curr = stack->head;
-	max = *(int *)curr->content;
+	max = curr->value;
 	max_pos = 0;
 	i = 0;
 	while (curr)
 	{
-		if (*(int *)curr->content > max)
+		if (curr->value > max)
 		{
-			max = *(int *)curr->content;
+			max = curr->value;
 			max_pos = i;
 		}
 		curr = curr->next;
@@ -60,6 +60,8 @@ void	selection_sort_stacks(t_stack **a, t_stack **b, t_counts *c)
 {
 	if ((*a)->size < 2 || is_sorted(*a))
 		return ;
+	if ((*a)->size == 3)
+		return sort_three(a, c);
 	while ((*a)->size > 0)
 		pb(a, b, c);
 	while ((*b)->size > 0)
@@ -76,9 +78,9 @@ void	sort_three(t_stack **a, t_counts *c)
 	int	y;
 	int	z;
 
-	x = *(int *)(*a)->head->content;
-	y = *(int *)(*a)->head->next->content;
-	z = *(int *)(*a)->head->next->next->content;
+	x = (*a)->head->value;
+	y = (*a)->head->next->value;
+	z = (*a)->head->next->next->value;
 	if (x > y && y < z && x < z)
 		sa(a, c);
 	else if (x > y && y > z)

@@ -13,7 +13,7 @@
 SRC		= push_swap.c parsing.c parsing_utils.c create_stacks.c \
 		operation_stacks.c utils.c push_stacks.c \
 		rotate_stacks.c reverse_rotate_stacks.c simple_sort.c \
-		complex_sort.c medium_sort.c strategy.c
+		complex_sort.c medium_sort.c strategy.c bench.c
 OBJ		= ${SRC:.c=.o}
  
 CHK_SRC	= checker.c checker_utils.c parsing.c parsing_utils.c \

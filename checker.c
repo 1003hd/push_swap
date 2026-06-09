@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 00:00:00 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/09 15:20:57 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/09 19:01:59 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	run_ops(t_stack **a, t_stack **b)
 	line = read_line();
 	while (line)
 	{
-		if (*line != '\0' && !apply_op(line, a, b))
+		if (!apply_op(line, a, b))
 			return (free(line), 1);
 		free(line);
 		line = read_line();
