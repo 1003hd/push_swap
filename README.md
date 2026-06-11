@@ -192,6 +192,83 @@ Every operation function accepts an optional `t_counts *` (pass `NULL` to skip).
 
 ---
 
+# Bonus — Checker
+
+The `checker` program is the bonus companion to `push_swap`. It reads a sequence of Push_swap operations from `stdin`, applies them to the stack built from its arguments, and reports whether the result is correctly sorted.
+
+## How it works
+
+1. `checker` receives the same integer list as `push_swap`.
+2. It reads operations line by line from `stdin` (one per line, e.g. `pa`, `rr`, `sa` …).
+3. After EOF it checks two conditions:
+   - Stack `a` is sorted in ascending order (smallest on top).
+   - Stack `b` is empty.
+4. It prints `OK` to `stdout` if both conditions hold, `KO` otherwise.
+5. On any error (non-integer argument, duplicate, unknown operation …) it prints `Error` to `stderr`.
+
+## Compilation
+
+The checker is built via the `bonus` Makefile rule:
+
+```bash
+make bonus
+```
+
+This produces the `checker` executable alongside `push_swap`.
+
+## Usage
+
+```bash
+./checker <integers...>
+```
+
+Pipe `push_swap` output directly into `checker` to verify a sorting sequence:
+
+```bash
+ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
+OK
+```
+
+Works with any strategy flag:
+
+```bash
+ARG="4 67 3 87 23"; ./push_swap --complex $ARG | ./checker $ARG
+OK
+```
+
+Benchmark mode keeps operations on `stdout` so the pipe still works while metrics go to `stderr`:
+
+```bash
+ARG="4 67 3 87 23"; ./push_swap --bench --adaptive $ARG 2>bench.txt | ./checker $ARG
+OK
+```
+
+## Error cases
+
+```bash
+./checker 3 2 one 0   # non-integer argument
+Error
+./checker "" 1        # empty string argument
+Error
+./checker 3 2 1 0     # valid args, wrong operations → KO
+sa
+rra
+pb
+KO
+```
+
+## Implementation notes
+
+| File | Role |
+|---|---|
+| `checker.c` | Entry point: parses arguments, drives the op-reading loop, prints `OK` / `KO` |
+| `checker_utils.c` | `read_line` (dynamic line reader from `stdin`) and `apply_op` (dispatches each operation string to the matching stack function) |
+| `checker.h` | Header: includes `push_swap.h` and declares `read_line` / `apply_op` |
+
+The checker reuses all stack primitives (`swap`, `push`, `rotate`, `reverse_rotate`) and the parser from the main project — no duplicate logic.
+
+---
+
 # Resources
 
 ## Documentation & References
