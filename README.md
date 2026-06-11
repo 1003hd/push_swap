@@ -203,12 +203,26 @@ Every operation function accepts an optional `t_counts *` (pass `NULL` to skip).
 
 - Radix sort
   https://en.wikipedia.org/wiki/Radix_sort
+  https://www.youtube.com/watch?v=UyFH-KayvM4
+
+- Chunk based sort
+  https://satyadeepmaheshwari.medium.com/sorting-large-datasets-with-limited-memory-the-chunked-merge-sort-approach-318275275c81
+  https://www.cs.upc.edu/~conrado/research/talks/dmd06.pdf
 
 - Selection sort
   https://en.wikipedia.org/wiki/Selection_sort
 
+- Big O notation
+  https://www.bigocheatsheet.com/
+  https://www.geeksforgeeks.org/dsa/analysis-algorithms-big-o-analysis/
+
 - push_swap visualizer (for debugging and intuition)
   https://github.com/o-reo/push_swap_visualizer
+
+- Bitwise operations
+  https://www.w3schools.com/c/c_bitwise_operators.php
+
+---
 
 ## AI Usage
 
