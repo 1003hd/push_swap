@@ -23,12 +23,13 @@ int	total_ops(t_counts *c)
 		+ c->ra + c->rb + c->rr + c->rra + c->rrb + c->rrr);
 }
 
-int	parse_flags(int *ac, char ***av, int *bench)
+int	parse_flags(int *ac, char ***av, t_run *r)
 {
 	int	strategy;
 
 	strategy = 4;
-	*bench = 0;
+	r->bench = 0;
+	r->count_only = 0;
 	while (*ac > 1 && is_flag((*av)[1]))
 	{
 		if (ft_strncmp((*av)[1], "--simple", 9) == 0)
@@ -40,12 +41,11 @@ int	parse_flags(int *ac, char ***av, int *bench)
 		else if (ft_strncmp((*av)[1], "--adaptive", 11) == 0)
 			strategy = 4;
 		else if (ft_strncmp((*av)[1], "--bench", 8) == 0)
-			*bench = 1;
+			r->bench = 1;
+		else if (ft_strncmp((*av)[1], "--count-only", 13) == 0)
+			r->count_only = 1;
 		else
-		{
-			error_exit();
-			return (-1);
-		}
+			return (error_exit(), -1);
 		(*av)++;
 		(*ac)--;
 	}

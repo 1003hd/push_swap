@@ -35,7 +35,8 @@ void	rotate(t_stack **s)
 void	ra(t_stack **a, t_counts *c)
 {
 	rotate(a);
-	write(1, "ra\n", 3);
+	if (!c || !c->silent)
+		write(1, "ra\n", 3);
 	if (c)
 		c->ra++;
 }
@@ -44,7 +45,8 @@ void	ra(t_stack **a, t_counts *c)
 void	rb(t_stack **b, t_counts *c)
 {
 	rotate(b);
-	write(1, "rb\n", 3);
+	if (!c || !c->silent)
+		write(1, "rb\n", 3);
 	if (c)
 		c->rb++;
 }
@@ -54,7 +56,8 @@ void	rr(t_stack **a, t_stack **b, t_counts *c)
 {
 	rotate(a);
 	rotate(b);
-	write(1, "rr\n", 3);
+	if (!c || !c->silent)
+		write(1, "rr\n", 3);
 	if (c)
 		c->rr++;
 }

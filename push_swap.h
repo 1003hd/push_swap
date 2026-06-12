@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:46 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/12 17:12:16 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/12 17:49:40 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,16 @@ typedef struct s_counts
 	int	rra;
 	int	rrb;
 	int	rrr;
+	int	silent;
 }	t_counts;
 
-// 
 typedef struct s_run
 {
 	double		disorder;
 	t_counts	*c;
 	int			bench;
 	int			strategy;
+	int			count_only;
 }	t_run;
 
 // Parsing — returns size on success, -1 on error
@@ -65,6 +66,7 @@ void	free_stack(t_stack *stack);
 
 // Error
 void	error_exit(void);
+void	free_and_exit(t_stack **a, t_stack **b);
 
 // Low-level move primitives (silent; shared with the checker)
 void	swap(t_stack **s);
@@ -93,7 +95,7 @@ int		get_size(char **nb_array);
 char	*join_args(int ac, char **av);
 void	free_nb_array(char **nb_array);
 double	compute_disorder(t_stack *stack);
-int		parse_flags(int *ac, char ***av, int *bench);
+int		parse_flags(int *ac, char ***av, t_run *r);
 int		run_strategy(t_stack **a, t_stack **b, t_run *r);
 void	print_bench(double disorder, int strategy, t_counts *c);
 int		total_ops(t_counts *c);

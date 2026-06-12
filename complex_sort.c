@@ -101,10 +101,7 @@ void	radix_sort_stacks(t_stack **a, t_stack **b, t_counts *c)
 		return ;
 	}
 	if (!normalize(*a))
-	{
-		error_exit();
-		return ;
-	}
+		free_and_exit(a, b);
 	if ((*a)->size == 3)
 		sort_three(a, c);
 	else

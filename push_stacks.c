@@ -33,7 +33,8 @@ void	push(t_stack **dst, t_stack **src)
 void	pa(t_stack **a, t_stack **b, t_counts *c)
 {
 	push(a, b);
-	write(1, "pa\n", 3);
+	if (!c || !c->silent)
+		write(1, "pa\n", 3);
 	if (c)
 		c->pa++;
 }
@@ -42,7 +43,8 @@ void	pa(t_stack **a, t_stack **b, t_counts *c)
 void	pb(t_stack **a, t_stack **b, t_counts *c)
 {
 	push(b, a);
-	write(1, "pb\n", 3);
+	if (!c || !c->silent)
+		write(1, "pb\n", 3);
 	if (c)
 		c->pb++;
 }

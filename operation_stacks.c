@@ -32,7 +32,8 @@ void	swap(t_stack **s)
 void	sa(t_stack **a, t_counts *c)
 {
 	swap(a);
-	write(1, "sa\n", 3);
+	if (!c || !c->silent)
+		write(1, "sa\n", 3);
 	if (c)
 		c->sa++;
 }
@@ -41,7 +42,8 @@ void	sa(t_stack **a, t_counts *c)
 void	sb(t_stack **b, t_counts *c)
 {
 	swap(b);
-	write(1, "sb\n", 3);
+	if (!c || !c->silent)
+		write(1, "sb\n", 3);
 	if (c)
 		c->sb++;
 }
@@ -51,7 +53,8 @@ void	ss(t_stack **a, t_stack **b, t_counts *c)
 {
 	swap(a);
 	swap(b);
-	write(1, "ss\n", 3);
+	if (!c || !c->silent)
+		write(1, "ss\n", 3);
 	if (c)
 		c->ss++;
 }
