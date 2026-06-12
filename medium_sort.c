@@ -6,7 +6,7 @@
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 16:51:40 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/09 18:36:36 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/12 17:10:39 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,7 @@ void	medium_sort_stacks(t_stack **a, t_stack **b, t_counts *c)
 	n = (*a)->size;
 	if (n < 2 || is_sorted(*a))
 		return ;
-	sz = n / 13;
-	if (n > 100)
-		sz = n / 9;
+	sz = isqrt(n);
 	if (sz < 1)
 		sz = 1;
 	push_to_b(a, b, sz, c);

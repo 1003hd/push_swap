@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:33 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/09 18:12:48 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:02:46 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	error_exit(void)
 {
 	write(2, "Error\n", 6);
+	exit(1);
 }
 
 // New helpers to keep main under 5 vars
