@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 17:49:46 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/09 19:16:36 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/12 16:46:55 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int		parse_flags(int *ac, char ***av, int *bench);
 int		run_strategy(t_stack **a, t_stack **b, t_run *r);
 void	print_bench(double disorder, int strategy, t_counts *c);
 int		total_ops(t_counts *c);
+int		isqrt(int n);
 
 //Sorting
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 16:51:40 by baserbet          #+#    #+#             */
-/*   Updated: 2026/06/09 18:14:21 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/12 16:46:47 by baserbet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,14 @@ double	compute_disorder(t_stack *stack)
 		ci = ci->next;
 	}
 	return (mistakes / total);
+}
+
+int	isqrt(int n)
+{
+	long	r;
+
+	r = 1;
+	while (r * r <= (long)n)
+		r++;
+	return ((int)(r - 1));
 }
