@@ -79,6 +79,16 @@ static void	max_to_top(t_stack **b, t_counts *c)
 	}
 }
 
+static int	isqrt(int n)
+{
+	long	r;
+
+	r = 1;
+	while (r * r <= (long)n)
+		r++;
+	return ((int)(r - 1));
+}
+
 static void	push_to_b(t_stack **a, t_stack **b, int sz, t_counts *c)
 {
 	int	ceiling;
@@ -112,9 +122,7 @@ void	medium_sort_stacks(t_stack **a, t_stack **b, t_counts *c)
 	n = (*a)->size;
 	if (n < 2 || is_sorted(*a))
 		return ;
-	sz = n / 13;
-	if (n > 100)
-		sz = n / 9;
+	sz = isqrt(n);
 	if (sz < 1)
 		sz = 1;
 	push_to_b(a, b, sz, c);
