@@ -6,7 +6,7 @@
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 16:51:40 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/09 18:36:36 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/12 17:10:39 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,6 @@ static void	max_to_top(t_stack **b, t_counts *c)
 		while (pos-- > 0)
 			rrb(b, c);
 	}
-}
-
-static int	isqrt(int n)
-{
-	long	r;
-
-	r = 1;
-	while (r * r <= (long)n)
-		r++;
-	return ((int)(r - 1));
 }
 
 static void	push_to_b(t_stack **a, t_stack **b, int sz, t_counts *c)
