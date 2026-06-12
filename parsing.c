@@ -82,6 +82,17 @@ static int	check_nb_array(char **nb_array)
 	return (1);
 }
 
+static int	has_empty_arg(int ac, char **av)
+{
+	int	i;
+
+	i = 1;
+	while (i < ac)
+		if (av[i++][0] == '\0')
+			return (1);
+	return (0);
+}
+
 //returns number of values on success, -1 on any error.
 int	parse(int ac, char **av, int **values)
 {
@@ -91,6 +102,8 @@ int	parse(int ac, char **av, int **values)
 
 	*values = NULL;
 	if (ac < 2)
+		return (-1);
+	if (has_empty_arg(ac, av))
 		return (-1);
 	joined = join_args(ac, av);
 	if (!joined)
